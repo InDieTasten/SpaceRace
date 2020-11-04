@@ -12,3 +12,7 @@ These decisions have been made by the team:
 - Use a fixed aspect ratio for the game, because UI design and layouting would explode in effort otherwise.
 
 - Use 16:9 aspect ratio, because that's the most common.
+
+- Use mouse and keyboard for input devices (Reason?)
+
+- Make sure the game design could be ported to gamepad's in the future (Reason?)
