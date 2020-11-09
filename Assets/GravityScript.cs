@@ -26,8 +26,10 @@ public class GravityScript : MonoBehaviour
         var directionFromShipToEarth = (Earth.transform.position - Spaceship.transform.position).normalized;
         var directionFromShipToMoon = (Moon.transform.position - Spaceship.transform.position).normalized;
 
+        // The gravity that affects the ship is the combined gravity from earth and the moon
         Physics2D.gravity = (directionFromShipToEarth * CalcGravityEarth()) + (directionFromShipToMoon * CalcGravityMoon());
 
+        // Text for debugging purposes - tells you the direction and strenght of the current gravity
         GravityText.GetComponent<UnityEngine.UI.Text>().text =
             "x: " + System.Math.Round(Physics2D.gravity.x, 2) +
             " y: " + System.Math.Round(Physics2D.gravity.y, 2) +
@@ -37,6 +39,8 @@ public class GravityScript : MonoBehaviour
     //ToDo: Improve Calculation
     private float CalcGravityEarth()
     {
+        // Should be gravity = (constant * massPlanet * massShip) / distance² - for real earth and spaceship (1 ton) this is around 9819 Newton on the surface
+        // Since the game is not to scale we set our own constant and degradation
         return GravityEarth / ((Earth.transform.position - Spaceship.transform.position).magnitude);
     }
 
